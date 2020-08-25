@@ -11,11 +11,12 @@ if db_is_new:
     cur.execute("INSERT INTO personnes (nom,prenom) VALUES ('doe','john')")
     cur.execute("INSERT INTO personnes (nom,prenom) VALUES ('snow','jon')")
     cur.execute("INSERT INTO personnes (nom,prenom) VALUES ('wick','john')")
+    conn.commit()
 else :
     print ("db exists")
     cur = conn.cursor()
-    cur.execute("CREATE TABLE personnes (id INTEGER PRIMARY KEY AUTOINCREMENT , nom TEXT, prenom TEXT)")
-    cur.execute("INSERT INTO personnes (nom,prenom) VALUES ('doe','john')")
-    cur.execute("INSERT INTO personnes (nom,prenom) VALUES ('snow','jon')")
-    cur.execute("INSERT INTO personnes (nom,prenom) VALUES ('wick','john')")
+    cur.execute("select * from personnes")
+    for var in cur :
+        print (var)
+
 conn.close()
